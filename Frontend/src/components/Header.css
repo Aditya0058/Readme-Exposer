@@ -1,10 +1,22 @@
 .Aditya-Rajput-Profile{
+    width: 130px;
+    height: 40px;
+    padding-top: 0;
+}
+.github-icon{
     width: 100px;
-    height: 30px;
+    height: 40px;
     padding-top: 0;
 }
 .pre-container{
     color: var(--muted);
     font-family: var(--font-excalifont);
-    font-size: 16px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.icon-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
 }
