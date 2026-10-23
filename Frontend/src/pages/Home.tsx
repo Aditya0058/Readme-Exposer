@@ -18,6 +18,9 @@ function Home() {
                 <img className='cyan gopher' src={cyanGopher}/>
                 <img className='red gopher' src={redGopher}/>
             </div>
+            <div className="message">
+                <p>Expose README.md</p>
+            </div>
             <div className="input-field">
                 <img className="banner-guys input-banner" src={bannerGuys} />
                 <img className='label-cloud' src={labelCloud} />
