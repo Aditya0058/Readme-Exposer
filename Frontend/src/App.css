@@ -1,3 +1,6 @@
 p {
   font-size: larger;
 }
+.header {
+  display: flex;
+}
