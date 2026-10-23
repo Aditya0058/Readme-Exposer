@@ -21,7 +21,7 @@ function Home() {
             <div className="input-field">
                 <img className="banner-guys input-banner" src={bannerGuys} />
                 <img className='label-cloud' src={labelCloud} />
-                <input type="text" className='repo_url' />
+                <input type="text" className='input_repo_url' placeholder='eg., https://github.com/Aditya0058/Candela-AI' />
                 <p className='input-banner-label1'>Paste Github Repo Link</p>
                 <p className='input-banner-label2'>below on banner</p>
             </div>

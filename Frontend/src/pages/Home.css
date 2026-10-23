@@ -76,3 +76,21 @@
 .footer p {
     font-family: var(--font-excalifont);
 }
+
+.input_repo_url {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 41%;
+    left: 31.5%;
+    padding-left: 2%;
+    /* padding-right: 16.5%; */
+    padding-top: 1%;
+    padding-bottom: 1.2%;
+    width: 26.5%;
+
+}
+.input_repo_url::placeholder {
+    font-family: var(--font-excalifont);
+    font-size: 1.05rem;
+}
