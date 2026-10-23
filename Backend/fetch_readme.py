@@ -1,4 +1,5 @@
 from urllib.parse import urlparse
+from urllib.request import urlopen
 def fetch_readme(url: str):
     result = urlparse(url)
     path = f"{result.path}"
@@ -6,18 +7,26 @@ def fetch_readme(url: str):
     url_data_arr = striped_path.split("/")
     userName = url_data_arr[0]
     repoName = url_data_arr[1]
-    if len(url_data_arr) > 3:
-        branch = url_data_arr[3]
+    if(len(url_data_arr) < 5):
+        if len(url_data_arr) > 3:
+            branch = url_data_arr[3]
+        else:
+            branch = "main"  
     else:
-        branch = "main"  
+        return "wrong url"
     
-    print(f"userName: {userName} repoName: {repoName} branch: {branch}")
+    # making real url to fetch readme
+    actual_url = f"https://raw.githubusercontent.com/{userName}/{repoName}/{branch}/README.md"
+
+    response = urlopen(actual_url)
+    readme_content = response.read().decode("utf-8")
+    
+    return readme_content
 
 
 
 
-
-fetch_readme("https://github.com/Aditya0058/Candela-Agent-MVP/tree/Aditya0058-patch-1")
+# fetch_readme("https://github.com/Aditya0058/Candela-Agent-MVP")
 
 
 
