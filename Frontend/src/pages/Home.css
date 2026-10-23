@@ -88,9 +88,18 @@
     padding-top: 1%;
     padding-bottom: 1.2%;
     width: 26.5%;
+    font-family: var(--font-excalifont);
+    font-size: 1.05rem;
+    
 
 }
 .input_repo_url::placeholder {
     font-family: var(--font-excalifont);
     font-size: 1.05rem;
+
+}
+.input_repo_url:focus{
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
