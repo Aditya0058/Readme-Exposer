@@ -72,6 +72,11 @@ def check_ai_or_not_ai(readme_content: str):
     )
     response.raise_for_status()
     answers = response.json()["answers"]
-    print("Authorship:", answers["authorship_category"]["choice"])
-    print("Project Specific:", answers["project_specific"]["noul"])
-    print("Consistency:", answers["consistency"]["noul"])
+
+    results = {
+        "Authorship": answers["authorship_category"]["choice"],
+        "Project Specific": answers["project_specific"]["noul"],
+        "Consistency": answers["consistency"]["noul"]
+    }
+
+    return results
