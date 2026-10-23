@@ -6,4 +6,5 @@
 .pre-container{
     color: var(--muted);
     font-family: var(--font-excalifont);
+    font-size: 16px;
 }
