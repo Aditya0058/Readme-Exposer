@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import './Result.css'
+// import './Result.css'
+import './Results.css'
 import AI from "./Assets/ResultPageSVG/AI.svg"
 import Human from "./Assets/ResultPageSVG/Human.svg"
 import cons_30 from "./Assets/ResultPageSVG/cons_30.svg"
@@ -26,6 +27,9 @@ function Result() {
     const github_urlhere = location.state?.github_url;
 
     const [result, setResult] = useState<ResultData | null>(null);
+    const consPercent = Number(result?.Consistency)*100;
+    const projectSpecific = Number(result?.['Project Specific'])*100;
+   
 
     async function sendUrl() {
         const response = await fetch("http://localhost:5000/getresult", {
@@ -37,7 +41,7 @@ function Result() {
                 message: github_urlhere
             })
         });
-
+        
         const data = await response.json();
 
         setResult(data.result);
@@ -47,14 +51,17 @@ function Result() {
         sendUrl();
     }, []);
 
+        
+
     function getainotaiCharacter(result: string){
+       
         if(result === 'human'){
             return Human
         } else if(result === 'ai_generated'){
             return AI
         }
     }
-
+    
     function getConsistencyCharacter(score: number){
         if(score < 50 && score >=40){
             return cons_50
@@ -81,8 +88,16 @@ function Result() {
             return pro__70
         }
     }
-
-
+    function getainotaiText(result: string) {
+        if(result === 'human'){
+            return "Human Written"
+        } else if(result === 'ai_generated'){
+            return "AI Generated"
+        }
+    }
+    
+   
+    
     return (
         <>
             {/* <p>This is result page: {github_urlhere}</p> */}
@@ -95,13 +110,22 @@ function Result() {
                         </div>
                         <div className="ainotai-result-charater">
                             <img className='ai-not-ai-character' src={getainotaiCharacter(result.Authorship)} />
+                            
                         </div>
                         <div className="ai-or-not-ai-result">
-                            <h1 className='aiornotai'>AI</h1>
+                            <h1 className='aiornotai'>{getainotaiText(result.Authorship)}</h1>
                         </div>
                         <div className='other-result-characters'>
                             <img src={getConsistencyCharacter(result.Consistency)} alt='ok1' />
                             <img src={getProjectSpecificCharacter(result['Project Specific'])} alt='ok2'/>
+                        </div>
+                        <div className="other-result-percentage">
+                            <h2>{consPercent}%</h2>
+                            <h2>{projectSpecific}%</h2>
+                        </div>
+                        <div className="other-result-percentage">
+                            <h2 className='consistency-percentage'></h2>
+                            <h2 className='project-specific-percentage'></h2>
                         </div>
                         <div className="other-results-baseline">
                             <h1 className='consistency'>Consistency</h1>

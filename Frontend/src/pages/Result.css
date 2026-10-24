@@ -8,6 +8,20 @@ p{
     flex-direction: column;
     position: relative;
 }
+/*  
+.results-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    width: 95%;
+    min-height: 450px;
+    margin: 20px auto;
+    border: 1px solid black;
+    border-radius: 12px;
+} */
+
+
 .result-heading{
     font-family: var(--font-excalifont);
     font-size: 3.5rem;
@@ -35,6 +49,8 @@ p{
 .ai-not-ai-character{
     width: 8%;
     position: absolute;
-    top: 6%;
-    left: 50%;
+
+}
+.other-result-pecentage{
+    display: flex;
 }
