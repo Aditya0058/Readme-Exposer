@@ -5,8 +5,6 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   server: {
-    allowedHosts: [
-      'august-lived-philadelphia-filename.trycloudflare.com'
-    ],
-  },
+    allowedHosts: true,
+  }
 })
