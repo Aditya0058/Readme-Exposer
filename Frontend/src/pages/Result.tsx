@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import './Result.css'
-import './Results.css'
+import './Result.css'
+// import './Results.css'
 import AI from "./Assets/ResultPageSVG/AI.svg"
 import Human from "./Assets/ResultPageSVG/Human.svg"
 import cons_30 from "./Assets/ResultPageSVG/cons_30.svg"
@@ -122,10 +122,6 @@ function Result() {
                         <div className="other-result-percentage">
                             <h2>{consPercent}%</h2>
                             <h2>{projectSpecific}%</h2>
-                        </div>
-                        <div className="other-result-percentage">
-                            <h2 className='consistency-percentage'></h2>
-                            <h2 className='project-specific-percentage'></h2>
                         </div>
                         <div className="other-results-baseline">
                             <h1 className='consistency'>Consistency</h1>

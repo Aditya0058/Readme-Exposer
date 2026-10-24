@@ -42,15 +42,21 @@ p{
     gap: 50%;
     align-items: center;
     justify-content: center;
-    padding-top: 20% ;  
+    padding-top: 1% ;  
 
 }
 
 .ai-not-ai-character{
-    width: 8%;
+    width: 9%;
     position: absolute;
+    left: 45%;
 
 }
 .other-result-pecentage{
     display: flex;
+    justify-content: space-around;
+}
+.other-result-characters{
+    display: flex;
+    justify-content: space-around;
 }
