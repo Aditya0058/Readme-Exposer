@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Result.css'
 // import './Results.css'
 import AI from "./Assets/ResultPageSVG/AI.svg"
@@ -87,15 +87,16 @@ function Result() {
         } else {
             return pro__70
         }
-    }
+    };
     function getainotaiText(result: string) {
         if(result === 'human'){
             return "Human Written"
         } else if(result === 'ai_generated'){
             return "AI Generated"
         }
-    }
-    
+    };
+    const cons_progressbar = useRef(null);
+    const specific_progressbar = useRef(null);
    
     
     return (
@@ -128,17 +129,15 @@ function Result() {
                             <h1 className='project-specific'>Project Specific</h1>
                         </div>
                         <div className="other-result-progressbar">
-                            <div className="consistency-progressbar-container"></div>
-                            <div className="specificproject-progressbar-container"></div>
+                            <div className="consistency-progressbar-container">
+                                <div className="cons-progressbar" style={{ width: `${consPercent}%` }} ref={cons_progressbar}>{consPercent}%</div>    
+                            </div>
+                            <div className="specificproject-progressbar-container">
+                                <div className="specfic-progressbar" style={{ width: `${projectSpecific}%` }} ref={specific_progressbar}>{projectSpecific}%</div>
+                            </div>
                         </div>
                     </div>
 
-
-                    {/* <p>Authorship: {result.Authorship}</p>
-
-                    <p>Project Specific: {result["Project Specific"]}</p>
-
-                    <p>Consistency: {result.Consistency}</p> */}
                 </>
             )}
         </>

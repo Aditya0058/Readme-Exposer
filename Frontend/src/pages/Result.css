@@ -62,3 +62,29 @@ p{
     display: flex;
     justify-content: space-around;
 }
+
+.other-result-progressbar{
+    display: flex;
+    gap: 20%;
+    justify-content: space-around;
+}
+.consistency-progressbar-container, .specificproject-progressbar-container{
+    background-color: aquamarine;
+    height: 50px;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+}
+.cons-progressbar, .specfic-progressbar{
+    width: 40%;
+    background-color: aqua;
+    height: inherit;
+    justify-self: flex-start;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-excalifont);
+    font-size: 200%;
+}
