@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import './Result.css'
-// import './Results.css'
 import AI from "./Assets/ResultPageSVG/AI.svg"
 import Human from "./Assets/ResultPageSVG/Human.svg"
 import cons_30 from "./Assets/ResultPageSVG/cons_30.svg"
