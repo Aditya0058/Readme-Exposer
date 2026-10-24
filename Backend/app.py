@@ -8,7 +8,7 @@ CORS(app, resources={
     r"/getresult": {
         "origins": [
             "http://localhost:5173",
-            "https://readme-frontend.vercel.app"
+            "https://readme-exposer-frontend.vercel.app"
         ],
         "methods": ["POST", "OPTIONS"],
         "allow_headers": ["Content-Type"]
