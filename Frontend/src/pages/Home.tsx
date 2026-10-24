@@ -8,6 +8,8 @@ import bannerGuys from "./Assets/HomePageSVG/bannerguys.svg"
 import labelCloud from "./Assets/HomePageSVG/labelCloud.svg"
 
 function Home() {
+
+    
     return(
         <>
         <div className="home-content">
