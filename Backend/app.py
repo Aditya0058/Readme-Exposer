@@ -4,7 +4,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(
+    app,
+    resources={
+        r"/getresult": {
+            "origins": [
+                "https://readmebackend.vercel.app"
+            ]
+        }
+    }
+)
 
 @app.route("/getresult", methods = ["POST"])
 def get_result():
