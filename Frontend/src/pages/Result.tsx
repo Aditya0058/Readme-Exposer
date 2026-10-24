@@ -47,17 +47,39 @@ function Result() {
         sendUrl();
     }, []);
 
-    function getConsistencyCharacter(score: number){
-        if(score < 50){
-            return cons_50
-        } else if (score < 40) {
-            return cons_40
-        }else if (score < 30 ) {
-            return cons_40
-        } else {
+    function getainotaiCharacter(result: string){
+        if(result === 'human'){
+            return Human
+        } else if(result === 'ai_generated'){
+            return AI
+        }
+    }
 
+    function getConsistencyCharacter(score: number){
+        if(score < 50 && score >=40){
+            return cons_50
+        } else if (score < 40 && score >= 30) {
+            return cons_40
+        }else if (score < 30) {
+            return cons_30
+        } else {
+            return cons__50
         }
 
+    };
+
+    function getProjectSpecificCharacter(score: number){
+        if(score < 70 && score >= 50){
+            return pro_70
+        }else if(score < 50 && score >= 40){
+            return pro_50
+        } else if(score < 40 && score >= 30){
+            return pro_40
+        } else if(score < 30){
+            return pro_30
+        } else {
+            return pro__70
+        }
     }
 
 
@@ -71,19 +93,21 @@ function Result() {
                         <div className="header">
                             <h1 className='result-heading' >Results</h1>
                         </div>
+                        <div className="ainotai-result-charater">
+                            <img className='ai-not-ai-character' src={getainotaiCharacter(result.Authorship)} />
+                        </div>
                         <div className="ai-or-not-ai-result">
                             <h1 className='aiornotai'>AI</h1>
                         </div>
                         <div className='other-result-characters'>
-                            <img src="#" alt='ok1' />
-                            <img src="#" alt='ok2'/>
+                            <img src={getConsistencyCharacter(result.Consistency)} alt='ok1' />
+                            <img src={getProjectSpecificCharacter(result['Project Specific'])} alt='ok2'/>
                         </div>
                         <div className="other-results-baseline">
                             <h1 className='consistency'>Consistency</h1>
                             <h1 className='project-specific'>Project Specific</h1>
                         </div>
                     </div>
-
 
 
                     {/* <p>Authorship: {result.Authorship}</p>
