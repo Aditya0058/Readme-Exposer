@@ -4,17 +4,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(
-    app,
-    resources={
-        r"/getresult": {
-            "origins": [
-                "https://readmebackend.vercel.app"
-            ]
-        }
+CORS(app, resources={
+    r"/getresult": {
+        "origins": [
+            "http://localhost:5173",
+            "https://readme-frontend.vercel.app"
+        ],
+        "methods": ["POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
     }
-)
-
+})
 @app.route("/getresult", methods = ["POST"])
 def get_result():
     data = request.get_json()
