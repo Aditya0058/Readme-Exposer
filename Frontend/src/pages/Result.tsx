@@ -127,6 +127,10 @@ function Result() {
                             <h1 className='consistency'>Consistency</h1>
                             <h1 className='project-specific'>Project Specific</h1>
                         </div>
+                        <div className="other-result-progressbar">
+                            <div className="consistency-progressbar-container"></div>
+                            <div className="specificproject-progressbar-container"></div>
+                        </div>
                     </div>
 
 

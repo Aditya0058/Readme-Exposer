@@ -31,6 +31,7 @@ p{
     font-family: var(--font-excalifont);
     justify-self: center;
     padding-top: 15%;
+    font-size: 180%;
 
 }
 
@@ -39,22 +40,23 @@ p{
     width: 100%;
     font-family: var(--font-excalifont);
     display: flex;
-    gap: 50%;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding-top: 1% ;  
 
 }
 
 .ai-not-ai-character{
-    width: 9%;
+    width: 13%;
     position: absolute;
-    left: 45%;
-
 }
-.other-result-pecentage{
+.ainotai-result-charater{
+    display: flex;
+    justify-content: center;
+}
+.other-result-percentage{
     display: flex;
     justify-content: space-around;
+    font-family: var(--font-excalifont);
 }
 .other-result-characters{
     display: flex;
