@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Result.css'
 import AI from "./Assets/ResultPageSVG/AI.svg"
 import Human from "./Assets/ResultPageSVG/Human.svg"
@@ -14,7 +15,7 @@ import pro_40 from "./Assets/ResultPageSVG/pro_40.svg"
 import pro_50 from "./Assets/ResultPageSVG/pro_50.svg"
 
 
-
+const DEPLOYMENT_URL = "https://readmeexposerbackend.vercel.app";
 type ResultData = {
     Authorship: string;
     "Project Specific": number;
@@ -31,7 +32,7 @@ function Result() {
    
 
     async function sendUrl() {
-        const response = await fetch("http://localhost:5000/getresult", {
+        const response = await fetch(`${DEPLOYMENT_URL}/getresult`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -50,7 +51,11 @@ function Result() {
         sendUrl();
     }, []);
 
-        
+    const navigate = useNavigate();
+
+    function goHome() {
+        navigate('/');
+    }
 
     function getainotaiCharacter(result: string){
        
@@ -107,6 +112,7 @@ function Result() {
                     <div className="results-content">
                         <div className="header">
                             <h1 className='result-heading' >Results</h1>
+                            <button className='goback' onClick={goHome}>Go back</button>
                         </div>
                         <div className="ainotai-result-charater">
                             <img className='ai-not-ai-character' src={getainotaiCharacter(result.Authorship)} />

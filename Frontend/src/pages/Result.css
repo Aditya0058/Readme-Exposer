@@ -21,7 +21,18 @@ p{
     border-radius: 12px;
 } */
 
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.goback{
+    background-color: beige;
+    border: dotted black;
+    border-radius: 20px;
+    height: 50px;
+    width: 100px;
 
+}
 .result-heading{
     font-family: var(--font-excalifont);
     font-size: 3.5rem;
