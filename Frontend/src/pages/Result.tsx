@@ -15,7 +15,7 @@ import pro_40 from "./Assets/ResultPageSVG/pro_40.svg"
 import pro_50 from "./Assets/ResultPageSVG/pro_50.svg"
 
 
-const DEPLOYMENT_URL = "https://readmebackend.vercel.app/";
+const DEPLOYMENT_URL = "https://readmebackend.vercel.app";
 type ResultData = {
     Authorship: string;
     "Project Specific": number;
