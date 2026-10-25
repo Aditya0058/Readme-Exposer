@@ -12,6 +12,9 @@
 4) You will be redirected to 'results' page 
 5) Look at the result 
 6) If u want to try another one, press 'Go Home' on top right side
+- if u want check results for following repos
+    - https://github.com/Aditya0058/Candela-AI ---> this is actually human written
+    - https://github.com/Aditya0058/Buy-Me-A-Chai ---> this is literally writtend by AI
 
 
 # Features 
