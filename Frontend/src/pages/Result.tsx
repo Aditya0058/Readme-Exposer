@@ -101,7 +101,7 @@ function Result() {
     };
     const cons_progressbar = useRef(null);
     const specific_progressbar = useRef(null);
-   
+
     
     return (
         <>
@@ -122,8 +122,9 @@ function Result() {
                             <h1 className='aiornotai'>{getainotaiText(result.Authorship)}</h1>
                         </div>
                         <div className='other-result-characters'>
-                            <img src={getConsistencyCharacter(result.Consistency)} alt='ok1' />
-                            <img src={getProjectSpecificCharacter(result['Project Specific'])} alt='ok2'/>
+                            <img src={getConsistencyCharacter(Number(result.Consistency)*100)} alt='ok1' />
+                            {/* <img src={getProjectSpecificCharacter(result['Project Specific'])} alt='ok2'/> */}
+                            <img src={getProjectSpecificCharacter(Number(result['Project Specific'])*100)} alt='ok2'/>
                         </div>
                         <div className="other-result-percentage">
                             <h2>{consPercent}%</h2>
