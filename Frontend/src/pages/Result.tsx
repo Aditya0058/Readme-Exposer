@@ -31,22 +31,63 @@ function Result() {
     const projectSpecific = Number(result?.['Project Specific'])*100;
    
 
-    async function sendUrl() {
-        const response = await fetch(`${DEPLOYMENT_URL}/getresult`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: github_urlhere
-            })
-        });
+    // async function sendUrl() {
+    //     const response = await fetch(`${DEPLOYMENT_URL}/getresult`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             message: github_urlhere
+    //         })
+    //     });
         
-        const data = await response.json();
+    //     const data = await response.json();
+    // console.log("Authorship:", data);
 
-        setResult(data.result);
+    //     setResult(data.result);
+    // }
+    async function sendUrl() {
+        const maxAttempts = 4;
+
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                const response = await fetch(`${DEPLOYMENT_URL}/getresult`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        message: github_urlhere
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const authorship = data.result?.Authorship;
+
+                console.log(`Attempt ${attempt}:`, authorship);
+
+                if (authorship === "human" || authorship === "ai_generated") {
+                    setResult(data.result);
+                    return;
+                }
+
+                if (attempt === maxAttempts) {
+                    setResult(data.result);
+                }
+            } catch (error) {
+                console.error(`Attempt ${attempt} failed:`, error);
+
+                if (attempt === maxAttempts) {
+                    return;
+                }
+            }
+        }
     }
-
     useEffect(() => {
         sendUrl();
     }, []);
