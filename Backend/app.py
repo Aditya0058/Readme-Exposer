@@ -37,4 +37,4 @@ def get_result():
 # print(result) # {'Authorship': 'human', 'Project Specific': 0.96, 'Consistency': 0.55}
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5002, debug=False)
