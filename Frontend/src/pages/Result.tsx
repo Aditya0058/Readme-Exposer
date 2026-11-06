@@ -15,7 +15,7 @@ import pro_40 from "./Assets/ResultPageSVG/pro_40.svg"
 import pro_50 from "./Assets/ResultPageSVG/pro_50.svg"
 
 
-const DEPLOYMENT_URL = "https://readme-exposer-backend.adityarajputnest.hackclub.app";
+const DEPLOYMENT_URL = "https://readmebackend.vercel.app";
 type ResultData = {
     Authorship: string;
     "Project Specific": number;
@@ -48,44 +48,25 @@ function Result() {
     //     setResult(data.result);
     // }
     async function sendUrl() {
-        const maxAttempts = 4;
+        try {
+            const response = await fetch(`${DEPLOYMENT_URL}/getresult`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: github_urlhere
+                })
+            });
 
-        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-            try {
-                const response = await fetch(`${DEPLOYMENT_URL}/getresult`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        message: github_urlhere
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const authorship = data.result?.Authorship;
-
-                console.log(`Attempt ${attempt}:`, authorship);
-
-                if (authorship === "human" || authorship === "ai_generated") {
-                    setResult(data.result);
-                    return;
-                }
-
-                if (attempt === maxAttempts) {
-                    setResult(data.result);
-                }
-            } catch (error) {
-                console.error(`Attempt ${attempt} failed:`, error);
-
-                if (attempt === maxAttempts) {
-                    return;
-                }
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
             }
+
+            const data = await response.json();
+            setResult(data.result);
+        } catch (error) {
+            console.error(`Fetch failed:`, error);
         }
     }
     useEffect(() => {
@@ -99,11 +80,13 @@ function Result() {
     }
 
     function getainotaiCharacter(result: string){
-       
+
         if(result === 'human'){
             return Human
         } else if(result === 'ai_generated'){
             return AI
+        } else {
+            return Human // Fallback to human or a neutral icon if you add one
         }
     }
     
@@ -138,6 +121,8 @@ function Result() {
             return "Human Written"
         } else if(result === 'ai_generated'){
             return "AI Generated"
+        } else {
+            return "Insufficient Evidence"
         }
     };
     const cons_progressbar = useRef(null);
